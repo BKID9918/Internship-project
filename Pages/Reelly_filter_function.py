@@ -9,7 +9,7 @@ class ReellyFilterFunc(Page):
 
     secondary= (By.CSS_SELECTOR,"[href='/secondary-listings']")
     page_verification = (By.CSS_SELECTOR, "[class='page-title listing']")
-    email_field = (By.CSS_SELECTOR, "#email-2")
+    email_field = (By.CSS_SELECTOR, "[id='email-2']")
     password_field = (By.CSS_SELECTOR,"#field")
     continue_button = (By.CSS_SELECTOR, "[class='login-button w-button']")
     filters_button = (By.CSS_SELECTOR, "[class='filter-button']")
