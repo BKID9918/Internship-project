@@ -33,7 +33,7 @@ def browser_init(context, scenario_name):
 
     ### HEADLESS MODE ####
     options = Options()
-    options.add_argument('--headless')
+    options.add_argument('headless')
     service = Service(GeckoDriverManager().install())
     context.driver = webdriver.Firefox(
         options=options,
