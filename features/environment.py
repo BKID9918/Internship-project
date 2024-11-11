@@ -4,7 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.firefox.options import Options
+# from selenium.webdriver.firefox.options import Options
 
 from app.application import Application
 
@@ -17,12 +17,12 @@ def browser_init(context, scenario_name):
     :param scenario_name:
     :param context: Behave context
     """
-    # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Chrome(service=service)
-    driver_path = GeckoDriverManager().install()
+    driver_path = ChromeDriverManager().install()
     service = Service(driver_path)
-    context.driver = webdriver.Firefox(service=service)
+    context.driver = webdriver.Chrome(service=service)
+    # driver_path = GeckoDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Firefox(service=service)
 
     ### SAFARI ###
     # context.driver = webdriver.Safari()
@@ -32,29 +32,29 @@ def browser_init(context, scenario_name):
     # context.driver = webdriver.Firefox(service=service)
 
     ### HEADLESS MODE ####
-    options = Options()
-    options.add_argument('headless')
-    service = Service(GeckoDriverManager().install())
-    context.driver = webdriver.Firefox(
-        options=options,
-        service=service
-    )
+    # options = Options()
+    # options.add_argument('headless')
+    # service = Service(GeckoDriverManager().install())
+    # context.driver = webdriver.Firefox(
+    #     options=options,
+    #     service=service
+    # )
 
     ### BROWSERSTACK ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    # bs_user = 'joelbenjamin_KsXTrB'
-    # bs_key = 'qkbDq5XgFxJz456t85e1'
-    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    #
-    # options = Options()
-    # bstack_options = {
-    #     "os" : "Windows",
-    #     "osVersion" : "11",
-    #     'browserName': 'edge',
-    #     'sessionName': scenario_name,
-    # }
-    # options.set_capability('bstack:options', bstack_options)
-    # context.driver = webdriver.Remote(command_executor=url, options=options)
+    bs_user = 'joelbenjamin_KsXTrB'
+    bs_key = 'qkbDq5XgFxJz456t85e1'
+    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+
+    options = Options()
+    bstack_options = {
+        "os" : "Windows",
+        "osVersion" : "11",
+        'browserName': 'edge',
+        'sessionName': scenario_name,
+    }
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
