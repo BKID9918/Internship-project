@@ -7,7 +7,7 @@ from Pages.base_page import Page
 
 class ReellyFilterFunc(Page):
 
-    secondary=(By.CSS_SELECTOR, "[id*='w-node-b528']")
+    secondary=(By.CSS_SELECTOR, '[class="menu_block_1"] a[href="/secondary-listings"]')
     page_verification = (By.CSS_SELECTOR, "[class='page-title listing']")
     email_field = (By.CSS_SELECTOR, "[id='email-2']")
     password_field = (By.CSS_SELECTOR,"#field")
@@ -38,10 +38,10 @@ class ReellyFilterFunc(Page):
         self.driver.find_element(*self.continue_button).click()
 
     def click_on_secondary(self):
-        self.driver.find_element(*self.secondary).click()
+        self.click(*self.secondary)
 
     def click_on_filter_BTN(self):
-        self.driver.find_element(*self.filters_button).click()
+        self.click(*self.filters_button)
 
     # def click_from_input_field(self, text):
     #         self.driver.find_element(*self.unit_price_from_input).send_keys('1200000')

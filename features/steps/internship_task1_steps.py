@@ -29,18 +29,20 @@ def click_continue(context):
 
 @when('Click Secondary on menu')
 def click_secondary_on_menu(context):
-    context.app.Reelly_filter_function.click_on_secondary()
     sleep(5)
+    context.app.Reelly_filter_function.click_on_secondary()
+
 
 @when('Click on Filters')
 def click_on_filters_button(context):
+    sleep(5)
     context.app.Reelly_filter_function.click_on_filter_BTN()
-    sleep(3)
 
 @when('Filter the products by price range from 1200000')
 def input_price_range_in_from_field(context):
-    context.app.Reelly_filter_function.input_price_from_field('1200000')
     sleep(4)
+    context.app.Reelly_filter_function.input_price_from_field('1200000')
+
 
 @when('Filter the products by price range to 2000000')
 def input_price_range_in_to_field(context):
@@ -49,9 +51,10 @@ def input_price_range_in_to_field(context):
 
 @when('Click Apply Filters')
 def click_apply_filters(context):
-    context.app.Reelly_filter_function.click_apply_filters()
     sleep(4)
+    context.app.Reelly_filter_function.click_apply_filters()
 
 @then('Verify all products are within the specified price range')
 def verify_prices(context):
-        context.app.Reelly_filter_function.verify_price_in_range()
+    sleep(3)
+    context.app.Reelly_filter_function.verify_price_in_range()
