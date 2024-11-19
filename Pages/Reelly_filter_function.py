@@ -7,7 +7,7 @@ from Pages.base_page import Page
 
 class ReellyFilterFunc(Page):
 
-    secondary= (By.CSS_SELECTOR,"[href='/secondary-listings']")
+    secondary=(By.CSS_SELECTOR, "[id*='w-node-b528']")
     page_verification = (By.CSS_SELECTOR, "[class='page-title listing']")
     email_field = (By.CSS_SELECTOR, "[id='email-2']")
     password_field = (By.CSS_SELECTOR,"#field")
